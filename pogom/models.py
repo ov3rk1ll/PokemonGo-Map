@@ -8,6 +8,7 @@ from peewee import Model, MySQLDatabase, SqliteDatabase, InsertQuery,\
                    IntegerField, CharField, DoubleField, BooleanField,\
                    DateTimeField, OperationalError
 from playhouse.shortcuts import RetryOperationalError
+from playhouse.db_url import connect
 from datetime import datetime, timedelta
 from base64 import b64encode
 
@@ -31,16 +32,7 @@ def init_database():
     if db is not None:
         return db
 
-    if args.db_type == 'mysql':
-        db = MyRetryDB(
-            args.db_name,
-            user=args.db_user,
-            password=args.db_pass,
-            host=args.db_host)
-        log.info('Connecting to MySQL database on {}.'.format(args.db_host))
-    else:
-        db = SqliteDatabase(args.db)
-        log.info('Connecting to local SQLLite database.')
+    db = connect(args.db)
 
     return db
 

@@ -83,7 +83,7 @@ def get_args():
     parser.add_argument('-C', '--cors', help='Enable CORS on web server',
                         action='store_true', default=False)
     parser.add_argument('-D', '--db', help='Database filename',
-                        default='pogom.db')
+                        default='sqlite:///pogom.db')
     parser.add_argument('-cd', '--clear-db',
                         help='Deletes the existing database before starting the Webserver.',
                         action='store_true', default=False)
