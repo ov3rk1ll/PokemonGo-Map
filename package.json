@@ -24,6 +24,7 @@
     "jshint-stylish": "latest"
   },
   "scripts": {
+    "postinstall": "grunt build",
     "build": "grunt build",
     "lint": "grunt lint",
     "test": "echo \"Error: no test specified\" && exit 1"
